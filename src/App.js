@@ -12,6 +12,10 @@ function App() {
 		setToDos(currentArray => [toDo, ...currentArray]);
 		setToDo("");
 	};
+	const onDeleteBtn = event => {
+		const deleteItem = event.target.parentElement;
+		deleteItem.remove();
+	};
 	return (
 		<div>
 			<h1>To Dossss({toDos.length})</h1>
@@ -22,7 +26,10 @@ function App() {
 			<hr />
 			<ul>
 				{toDos.map((item, index) => (
-					<li key={index}>{item}</li>
+					<li key={index}>
+						{item}
+						<button onClick={onDeleteBtn}>X</button>
+					</li>
 				))}
 			</ul>
 		</div>
